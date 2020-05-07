@@ -3,7 +3,9 @@ haproxy_version: 1.5
 haproxy_dependencies:
   - name: haproxy
     state: latest
-haproxy_install: []
+haproxy_install:
+  - libselinux-python
+  - libsemanage-python
 ### These need to be defined in the playbook for CentOS
 #haproxy_global_stats:
 #  sockets:

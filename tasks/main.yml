@@ -18,6 +18,11 @@
     - haproxy
     - haproxy-install
 
+- include: selinux.yml
+  tags:
+    - haproxy-selinux
+  when: ansible_selinux.status == "enabled"
+
 - include: certificates.yml
   tags:
     - configuration

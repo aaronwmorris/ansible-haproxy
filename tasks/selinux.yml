@@ -1,0 +1,8 @@
+---
+
+- name: Allow haproxy to bind to all ports
+  seboolean:
+    name: haproxy_connect_any
+    state: yes
+    persistent: yes
+
