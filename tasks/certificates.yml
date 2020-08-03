@@ -22,3 +22,16 @@
   notify: restart haproxy
   tags:
     - haproxy-certificates-copy-files
+
+
+- name: certificates | copy from vars
+  copy:
+    content: "{{ '\n'.join((item.key, item.cert, item.ca_cert)) }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0640') }}"
+  with_items: "{{ haproxy_ssl_map_vars }}"
+  notify: restart haproxy
+  tags:
+    - haproxy-certificates-copy-files
